@@ -1,6 +1,4 @@
-const { error } = require('console')
 const User = require('../models/user-model')
-const { normalize } = require('path')
 
 const userRegisterValidationSchema = {
     username: {
