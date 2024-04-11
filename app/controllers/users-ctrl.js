@@ -52,5 +52,14 @@ userCtrl.login = async (req, res) => {
     }
 }
 
+userCtrl.account = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id)
+        res.json(user)
+    } catch(err) {
+        res.status(500).json({ error: 'something went wrong'})
+    }
+}
+
 
 module.exports = userCtrl
