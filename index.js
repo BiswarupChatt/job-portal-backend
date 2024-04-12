@@ -2,6 +2,7 @@
 require('dotenv').config()
 const express = require('express')
 const { checkSchema } = require('express-validator')
+const morgan = require('morgan')
 
 //files
 const configureDB = require('./config/db')
@@ -18,12 +19,13 @@ const port = 3333
 
 configureDB()
 app.use(express.json())
+app.use(morgan('common'))
 
 //application level middleware - using it for logging request for debug purpose
-app.use(function(req, res, next){
-    console.log(`${req.ip} - ${req.method}- ${req.url}- ${new Date()}`)
-    next()
-})
+// app.use(function(req, res, next){
+//     console.log(`${req.ip} - ${req.method}- ${req.url}- ${new Date()}`)
+//     next()
+// })
 
 
 //user start
