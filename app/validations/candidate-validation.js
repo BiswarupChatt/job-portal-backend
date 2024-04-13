@@ -3,26 +3,26 @@ const Candidate = require('../models/candidate-model')
 
 const candidateValidationSchema = {
     userId: {
-        custom:{
-            options: async function(value, {req}){
-                const candidate = await Candidate.findOne({userId: req.user.id})
-                if(candidate){
-                    throw new Error('profile already created')
-                }else{
-                    return true 
+        custom: {
+            options: async function (value, { req }) {
+                const candidate = await Candidate.findOne({ userId: req.user.id })
+                if (candidate) {
+                    throw new Error('Candidate Profile Already Created')
+                } else {
+                    return true
                 }
             }
         }
     },
     firstName: {
-        in: ['body'],
-        exists: {
-            errorMessage: 'first name is required'
-        },
-        notEmpty: {
-            errorMessage: 'first name cannot be empty'
-        },
-        trim: true
+            in: ['body'],
+            exists: {
+                errorMessage: 'first name is required'
+            },
+            notEmpty: {
+                errorMessage: 'first name cannot be empty'
+            },
+            trim: true
     },
     lastName: {
         in: ['body'],
@@ -51,13 +51,13 @@ const candidateValidationSchema = {
         },
         custom: {
             options: async function (value) {
-                    const candidate = await Candidate.findOne({ mobile: value })
-                    if(candidate){
-                        throw new error('Mobile already exists')
-                    } else{
-                        return true
-                    }
+                const candidate = await Candidate.findOne({ mobile: value })
+                if (candidate) {
+                    throw new error('Mobile already exists')
+                } else {
+                    return true
                 }
+            }
         },
         trim: true
     },
@@ -72,4 +72,4 @@ const candidateValidationSchema = {
     }
 }
 
-module.exports = {candidateValidationSchema}
+module.exports = { candidateValidationSchema }

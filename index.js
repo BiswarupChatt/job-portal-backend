@@ -8,9 +8,13 @@ const morgan = require('morgan')
 const configureDB = require('./config/db')
 const {userRegisterValidationSchema, userLoginValidationSchema} = require('./app/validations/user-validation')
 const {candidateValidationSchema} = require('./app/validations/candidate-validation')
+const { recruiterValidationSchema } = require('./app/validations/recruiter-validation')
+
 const userCtrl = require('./app/controllers/users-ctrl')
 const jobsCtrl = require('./app/controllers/jobs-ctrl')
 const candidatesCtrl = require('./app/controllers/candidate-ctrl')
+const recruiterCtrl = require('./app/controllers/recruiter-ctrl')
+
 const authenticateUser = require('./app/middlewares/authenticateUser')
 const authorizeUser = require('./app/middlewares/authorizeUser')
 
@@ -46,7 +50,11 @@ app.post('/api/jobs', authenticateUser, authorizeUser(['recruiter']), jobsCtrl.c
 app.post('/api/candidate/profile', authenticateUser, authorizeUser(['candidate']), checkSchema(candidateValidationSchema), candidatesCtrl.create, )
 app.get('/api/candidate/profile', candidatesCtrl.show, )
 app.put('/api/candidate/profile', candidatesCtrl.update, )
+app.delete('/api/candidate/profile', candidatesCtrl.delete, )
+//candidate end
 
+// recruiter start
+app.post('/api/recruiter/profile', authenticateUser, authorizeUser(['recruiter']), checkSchema(recruiterValidationSchema), recruiterCtrl.create)
 
 
 

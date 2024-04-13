@@ -20,15 +20,15 @@ candidatesCtrl.create = async (req, res) => {
 }
 
 candidatesCtrl.show = async (req, res) => {
-    res.send('show profile')
+    res.send('show candidate profile')
 }
 
 candidatesCtrl.update = async (req, res) => {
-    res.send('update profile')
+    res.send('update candidate profile')
 }
 
 candidatesCtrl.delete = async (req, res) => {
-    res.send(' delete profile')
+    res.send(' delete recruiter profile')
 }
 
 module.exports = candidatesCtrl
