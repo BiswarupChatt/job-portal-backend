@@ -14,19 +14,37 @@ recruiterCtrl.create = async (req, res) => {
         await recruiter.save()
         res.json(recruiter)
     } catch (err) {
-        res.status(500).json({errors: 'something went wrong'})
+        console.log(err)
+        res.status(500).json({ errors: 'something went wrong' })
     }
 }
 
-recruiterCtrl.show =async(req, res)=>{
-    res.send('show recruiter profile')
+recruiterCtrl.show = async (req, res) => {
+    try {
+        const recruiter = await Recruiter.findOne({ userId: req.user.id })
+        res.json(recruiter)
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ errors: 'something went wrong' })
+    }
 }
 
-recruiterCtrl.update = async(req,res)=>{
-    res.send('update recruiter profile')
+recruiterCtrl.update = async (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+    }
+    try {
+        const body = req.body
+        const recruiter = await Recruiter.findOneAndUpdate({ userId: req.user.id }, body, { new: true })
+        res.json(recruiter)
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ errors: 'something went wrong' })
+    }
 }
 
-recruiterCtrl.delete = async(req, res)=>{
+recruiterCtrl.delete = async (req, res) => {
     res.send('delete recruiter profile')
 }
 

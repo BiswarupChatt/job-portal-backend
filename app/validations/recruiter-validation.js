@@ -54,5 +54,34 @@ const recruiterValidationSchema = {
     }
 }
 
+const recruiterEditValidationSchema ={
+    companyName: {
+        in: ['body'],
+        exists: {
+            errorMessage: 'company name is required'
+        },
+        notEmpty: {
+            errorMessage: 'company name cannot be empty'
+        },
+    },
+    website: {
+        in: ['body'],
+        exists: {
+            errorMessage: 'website name is required'
+        },
+        notEmpty: {
+            errorMessage: 'website name cannot be empty'
+        },
+    },
+    address: {
+        in: ['body'],
+        exists: {
+            errorMessage: 'address name is required'
+        },
+        notEmpty: {
+            errorMessage: 'address name cannot be empty'
+        },
+    }
+}
 
-module.exports = { recruiterValidationSchema }
+module.exports = { recruiterValidationSchema, recruiterEditValidationSchema }

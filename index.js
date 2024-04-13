@@ -8,7 +8,7 @@ const morgan = require('morgan')
 const configureDB = require('./config/db')
 const { userRegisterValidationSchema, userLoginValidationSchema } = require('./app/validations/user-validation')
 const { candidateValidationSchema, candidateEditValidationSchema } = require('./app/validations/candidate-validation')
-const { recruiterValidationSchema } = require('./app/validations/recruiter-validation')
+const { recruiterValidationSchema, recruiterEditValidationSchema } = require('./app/validations/recruiter-validation')
 
 const userCtrl = require('./app/controllers/users-ctrl')
 const jobsCtrl = require('./app/controllers/jobs-ctrl')
@@ -55,7 +55,10 @@ app.delete('/api/candidate/profile', candidatesCtrl.delete,)
 
 // recruiter start
 app.post('/api/recruiter/profile', authenticateUser, authorizeUser(['recruiter']), checkSchema(recruiterValidationSchema), recruiterCtrl.create)
-
+app.get('/api/recruiter/profile',authenticateUser, authorizeUser(['recruiter']), recruiterCtrl.show)
+app.put('/api/recruiter/profile', authenticateUser, authorizeUser(['recruiter']), checkSchema(recruiterEditValidationSchema) ,recruiterCtrl.update)
+app.delete('/api/recruiter/profile', recruiterCtrl.delete)
+// recruiter end
 
 
 
