@@ -45,6 +45,7 @@ recruiterCtrl.update = async (req, res) => {
 }
 
 recruiterCtrl.delete = async (req, res) => {
+    //todo
     res.send('delete recruiter profile')
 }
 

@@ -48,6 +48,7 @@ candidatesCtrl.update = async (req, res) => {
 }
 
 candidatesCtrl.delete = async (req, res) => {
+    //todo
     res.send(' delete candidate profile')
 }
 
