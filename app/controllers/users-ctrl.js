@@ -19,7 +19,7 @@ userCtrl.register = async (req, res) => {
         await user.save()
         res.status(201).json(user)
     } catch (err) {
-        res.status(500).json({ error: 'something went wrong' })
+        res.status(500).json({ errors: 'something went wrong' })
     }
 }
 
@@ -42,13 +42,13 @@ userCtrl.login = async (req, res) => {
                 const token = jwt.sign(tokenData, process.env.JWT_SECRET, { expiresIn: '7d' })
                 res.json({ token: token })
             } else {
-                return res.status(404).json({ error: 'invalid credentials' })
+                return res.status(404).json({ errors: 'invalid credentials' })
             }
         } else {
-            return res.status(404).json({ error: 'invalid credentials' })
+            return res.status(404).json({ errors: 'invalid credentials' })
         }
     } catch (err) {
-        res.status(500).json({ error: 'something went wrong' })
+        res.status(500).json({ errors: 'something went wrong' })
     }
 }
 
@@ -57,7 +57,7 @@ userCtrl.account = async (req, res) => {
         const user = await User.findById(req.user.id)
         return res.json(user)
     } catch (err) {
-        return res.status(500).json({ error: 'something went wrong' })
+        return res.status(500).json({ errors: 'something went wrong' })
     }
 }
 

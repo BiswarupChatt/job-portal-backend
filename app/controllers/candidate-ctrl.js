@@ -15,7 +15,7 @@ candidatesCtrl.create = async (req, res) => {
         res.json(candidate)
     } catch (err) {
         console.log(err)
-        res.status(500).json({ error: 'something went wrong' })
+        res.status(500).json({ errors: 'something went wrong' })
     }
 }
 
@@ -25,7 +25,7 @@ candidatesCtrl.show = async (req, res) => {
         res.json(candidate)
     } catch (err) {
         console.log(err)
-        res.status(500).json({ error: 'something went wrong' })
+        res.status(500).json({ errors: 'something went wrong' })
     }
 }
 
@@ -40,7 +40,7 @@ candidatesCtrl.update = async (req, res) => {
         res.json(candidate)
     } catch (err) {
         console.log(err)
-        res.status(500).json({ error: 'something went wrong' })
+        res.status(500).json({ errors: 'something went wrong' })
     }
 }
 
