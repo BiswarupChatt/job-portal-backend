@@ -56,8 +56,8 @@ userCtrl.account = async (req, res) => {
     try {
         const user = await User.findById(req.user.id)
         return res.json(user)
-    } catch(err) {
-       return res.status(500).json({ error: 'something went wrong'})
+    } catch (err) {
+        return res.status(500).json({ error: 'something went wrong' })
     }
 }
 

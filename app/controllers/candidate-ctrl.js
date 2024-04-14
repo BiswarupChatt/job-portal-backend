@@ -17,7 +17,6 @@ candidatesCtrl.create = async (req, res) => {
         console.log(err)
         res.status(500).json({ error: 'something went wrong' })
     }
-
 }
 
 candidatesCtrl.show = async (req, res) => {
@@ -28,8 +27,6 @@ candidatesCtrl.show = async (req, res) => {
         console.log(err)
         res.status(500).json({ error: 'something went wrong' })
     }
-
-
 }
 
 candidatesCtrl.update = async (req, res) => {

@@ -49,5 +49,4 @@ recruiterCtrl.delete = async (req, res) => {
     res.send('delete recruiter profile')
 }
 
-
 module.exports = recruiterCtrl

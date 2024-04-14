@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema, model } = mongoose
 
-
 const recruiterSchema = new Schema({
     userId: {
         type: Schema.Types.ObjectId,
@@ -14,4 +13,4 @@ const recruiterSchema = new Schema({
 
 const recruiter = model('recruiter', recruiterSchema)
 
-module.exports= recruiter
+module.exports = recruiter

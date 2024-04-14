@@ -61,7 +61,6 @@ const userRegisterValidationSchema = {
     }
 }
 
-
 const userLoginValidationSchema = {
     email: {
         exists: {
@@ -91,7 +90,4 @@ const userLoginValidationSchema = {
     }
 }
 
-module.exports = {
-    userRegisterValidationSchema,
-    userLoginValidationSchema
-}
+module.exports = { userRegisterValidationSchema, userLoginValidationSchema }

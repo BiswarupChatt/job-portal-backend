@@ -1,6 +1,5 @@
 const Candidate = require('../models/candidate-model')
 
-
 const candidateValidationSchema = {
     userId: {
         custom: {
@@ -71,7 +70,6 @@ const candidateValidationSchema = {
         },
     }
 }
-
 
 const candidateEditValidationSchema = {
     firstName: {

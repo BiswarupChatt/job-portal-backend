@@ -1,17 +1,17 @@
 const Recruiter = require('../models/recruiter-model')
 
-
 const recruiterValidationSchema = {
     userId: {
-        custom :{
-            options: async function (value, {req}){
+        custom: {
+            options: async function (value, { req }) {
                 const recruiter = await Recruiter.findOne({
-                    userId: req.user.id})
-                    if(recruiter){
-                        throw new Error ('Recruiter Profile Already Created')
-                    } else{
-                        return true
-                    }
+                    userId: req.user.id
+                })
+                if (recruiter) {
+                    throw new Error('Recruiter Profile Already Created')
+                } else {
+                    return true
+                }
             }
         }
     },
@@ -54,7 +54,7 @@ const recruiterValidationSchema = {
     }
 }
 
-const recruiterEditValidationSchema ={
+const recruiterEditValidationSchema = {
     companyName: {
         in: ['body'],
         exists: {
