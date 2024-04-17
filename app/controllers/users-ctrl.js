@@ -61,5 +61,15 @@ userCtrl.account = async (req, res) => {
     }
 }
 
+userCtrl.checkEmail = async (req, res) => {
+    const email = req.query.email
+    const user = await User.findOne({email: email})
+    if(user){
+        res.json({is_email_registered: true})
+    }else{
+        res.json({is_email_registered: false})
+    }
+}
+
 
 module.exports = userCtrl

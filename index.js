@@ -32,6 +32,7 @@ app.use(cors())
 app.post('/users/register', checkSchema(userRegisterValidationSchema), userCtrl.register)
 app.post('/users/login', checkSchema(userLoginValidationSchema), userCtrl.login)
 app.get('/users/account', authenticateUser, userCtrl.account)
+app.get('/users/checkemail', userCtrl.checkEmail)
 //user end
 
 //jobs start
