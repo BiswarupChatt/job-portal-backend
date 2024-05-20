@@ -37,7 +37,8 @@ app.get('/users/checkemail', userCtrl.checkEmail)
 //user end
 
 //jobs start
-app.get('/api/jobs', authenticateUser, jobsCtrl.list)
+app.get('/api/jobs',  jobsCtrl.list)
+app.get('/api/jobs/my', authenticateUser, authorizeUser(['recruiter']), jobsCtrl.my)
 app.post('/api/jobs', authenticateUser, authorizeUser(['recruiter']), checkSchema(jobValidationSchema), jobsCtrl.create)
 //job end
 

@@ -3,7 +3,21 @@ const { validationResult } = require('express-validator')
 const jobsCtrl = {}
 
 jobsCtrl.list = async (req, res) => {
-    res.send('listing all jobs')
+    try{
+        const jobs = await Job.find()
+        res.status(201).json(jobs)
+    }catch(err){
+        res.status(500).json({errors: 'something went wrong'})
+    }
+}
+
+jobsCtrl.my = async (req, res)=>{
+    try{
+        const jobs  = await Job.find({recruiter : req.user.id })
+        res.status(201).json(jobs)
+    }catch(err){
+        res.status(500).json({errors: 'something went wrong'})
+    }
 }
 
 jobsCtrl.create = async (req, res) => {
