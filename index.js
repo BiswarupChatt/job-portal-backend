@@ -11,6 +11,7 @@ const configureDB = require('./config/db')
 const { userRegisterValidationSchema, userLoginValidationSchema } = require('./app/validations/user-validation')
 const { candidateValidationSchema, candidateEditValidationSchema } = require('./app/validations/candidate-validation')
 const { recruiterValidationSchema, recruiterEditValidationSchema } = require('./app/validations/recruiter-validation')
+const {jobValidationSchema} = require('./app/validations/job-validation')
 
 const userCtrl = require('./app/controllers/users-ctrl')
 const jobsCtrl = require('./app/controllers/jobs-ctrl')
@@ -37,7 +38,7 @@ app.get('/users/checkemail', userCtrl.checkEmail)
 
 //jobs start
 app.get('/api/jobs', authenticateUser, jobsCtrl.list)
-app.post('/api/jobs', authenticateUser, authorizeUser(['recruiter']), jobsCtrl.create)
+app.post('/api/jobs', authenticateUser, authorizeUser(['recruiter']), checkSchema(jobValidationSchema), jobsCtrl.create)
 //job end
 
 // candidate start

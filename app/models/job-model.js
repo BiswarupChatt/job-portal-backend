@@ -13,11 +13,11 @@ const jobSchema = new Schema ({
     jobType: String,
     experience: {
         minExp: Number,
-        maxExp: NUmber
+        maxExp: Number
     },
     skills: [String],
     dueDate: Date,
-    package: {
+    salary: {
         minSalary: Number,
         maxSalary: Number
     }
